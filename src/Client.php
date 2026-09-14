@@ -213,7 +213,7 @@ class Client
         ];
         
         // make request
-        $response = (new GuzzleCLient())->request(Method::POST->value, $this->getUrl('/auth'), $options);
+        $response = (new GuzzleCLient())->post($this->getUrl('/auth'), $options);
         
         // get contents
         $contents = $response->getBody()->getContents();
