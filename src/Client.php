@@ -148,12 +148,13 @@ class Client
     
     /**
      * @param string $endpoint
+     * @param array $data = []
      * 
      * @return array
      */
-    public function delete(string $endpoint): array
+    public function delete(string $endpoint, array $data = []): array
     {
-        return $this->request(Method::DELETE, $endpoint);
+        return $this->request(Method::DELETE, $endpoint, $data);
     }
     
     /**
@@ -256,6 +257,7 @@ class Client
         
         // build options
         $options = [
+            RequestOptions::HTTP_ERRORS => false,
             RequestOptions::HEADERS => [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json',
