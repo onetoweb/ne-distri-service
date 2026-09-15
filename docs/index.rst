@@ -62,3 +62,4 @@ Examples
 
 * `General <general.rst>`_
 * `Order <order.rst>`_
+* `Shipment <shipment.rst>`_
