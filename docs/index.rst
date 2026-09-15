@@ -63,3 +63,4 @@ Examples
 * `General <general.rst>`_
 * `Order <order.rst>`_
 * `Shipment <shipment.rst>`_
+* `Schedule <schedule.rst>`_
