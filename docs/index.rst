@@ -64,3 +64,4 @@ Examples
 * `Order <order.rst>`_
 * `Shipment <shipment.rst>`_
 * `Schedule <schedule.rst>`_
+* `Bulk <bulk.rst>`_
