@@ -23,19 +23,19 @@ class Client
     public const BASE_HREF = 'https://orders.ne.nl/api/v1';
     
     /**
-     * @var string
+     * @var string|null
      */
-    private string $nonce;
+    private ?string $nonce = null;
     
     /**
-     * @var Token
+     * @var Closure|null
      */
-    private Token $token;
+    private ?Closure $tokenUpdateCallback = null;
     
     /**
-     * @var Closure
+     * @var Token|null
      */
-    private Closure $tokenUpdateCallback;
+    private ?Token $token = null;
     
     /**
      * @param string $username
@@ -97,8 +97,10 @@ class Client
     
     /**
      * @param Token $token
+     * 
+     * @return void
      */
-    public function setToken(Token $token)
+    public function setToken(Token $token): void
     {
         $this->token = $token;
     }
@@ -139,9 +141,9 @@ class Client
      * @param string $endpoint
      * @param array $data = []
      * 
-     * @return array
+     * @return array|null
      */
-    public function patch(string $endpoint, array $data = []): array
+    public function patch(string $endpoint, array $data = []): ?array
     {
         return $this->request(Method::PATCH, $endpoint, $data);
     }
@@ -150,9 +152,9 @@ class Client
      * @param string $endpoint
      * @param array $data = []
      * 
-     * @return array
+     * @return array|null
      */
-    public function delete(string $endpoint, array $data = []): array
+    public function delete(string $endpoint, array $data = []): ?array
     {
         return $this->request(Method::DELETE, $endpoint, $data);
     }
@@ -243,13 +245,13 @@ class Client
      * @param array $data = []
      * @param array $query = []
      * 
-     * @return array
+     * @return array|null
      */
-    public function request(Method $method, string $endpoint, array $data = [], array $query = []): array
+    public function request(Method $method, string $endpoint, array $data = [], array $query = []): ?array
     {
         // check token
         if (
-            $this->token == null
+            $this->token === null
             or $this->token->isExpired()
         ) {
             $this->auth();
