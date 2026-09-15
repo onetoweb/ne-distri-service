@@ -91,7 +91,8 @@ class Client
     /**
      * @param Closure $tokenUpdateCallback
      */
-    public function setTokenUpdateCallback(Closure $tokenUpdateCallback) {
+    public function setTokenUpdateCallback(Closure $tokenUpdateCallback)
+    {
         $this->tokenUpdateCallback = $tokenUpdateCallback;
     }
     
